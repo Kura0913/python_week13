@@ -20,14 +20,14 @@ class LabelComponent(QtWidgets.QLabel):
             self.setStyleSheet("color: black;")
 
 class LineEditComponent(QtWidgets.QLineEdit):
-    def __init__(self, default_content="", length=10, width=200, font_size=16, Number=False):
+    def __init__(self, default_content="", length=10, width=200, font_size=16, number=False):
         super().__init__()
         self.setMaxLength(length)
         self.setText(default_content)
         self.setMinimumHeight(30)
         self.setMaximumWidth(width)
         self.setFont(QtGui.QFont("Arial", font_size))
-        if Number == True:
+        if number == True:
             validator = QtGui.QIntValidator(0, 999)
             self.setValidator(validator)
 

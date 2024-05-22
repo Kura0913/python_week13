@@ -17,11 +17,10 @@ class MainWidget(QtWidgets.QWidget):
 
         layout.addWidget(header_label, 0, 0, 1, 2)
         layout.addWidget(menu_widget, 1, 0, 1, 1)
-        layout.addWidget(function_widget, 1, 1, 2, 2)
+        layout.addWidget(function_widget, 1, 1, 1, 1)
 
-        layout.setColumnStretch(0, 2)
-        layout.setColumnStretch(1, 8)
-        layout.setColumnStretch(2, 2)
+        layout.setColumnStretch(0, 1)
+        layout.setColumnStretch(1, 6)
         layout.setRowStretch(0, 1)
         layout.setRowStretch(1, 6)
 

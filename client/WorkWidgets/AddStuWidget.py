@@ -18,14 +18,14 @@ class AddStuWidget(QtWidgets.QWidget):
         self.message_label = LabelComponent(12, "", "red")
         self.name_editor = LineEditComponent("Name")
         self.subject_editor = LineEditComponent("Subject")
-        self.score_editor = LineEditComponent("", Number=True)
-        self.Querybutton = ButtonComponent("Query")
-        self.Addbutton = ButtonComponent("Add")
-        self.Sendbutton = ButtonComponent("Send")
+        self.score_editor = LineEditComponent("", number=True)
+        self.query_button = ButtonComponent("Query")
+        self.add_button = ButtonComponent("Add")
+        self.send_button = ButtonComponent("Send")
 
-        self.Querybutton.clicked.connect(self.click_query)
-        self.Addbutton.clicked.connect(self.click_add)
-        self.Sendbutton.clicked.connect(self.click_send)
+        self.query_button.clicked.connect(self.click_query)
+        self.add_button.clicked.connect(self.click_add)
+        self.send_button.clicked.connect(self.click_send)
 
         self.name_editor.textChanged.connect(self.query_situation)
         self.subject_editor.textChanged.connect(self.add_situation)
@@ -43,9 +43,9 @@ class AddStuWidget(QtWidgets.QWidget):
         layout.addWidget(self.name_editor, 1, 1, 1, 1)
         layout.addWidget(self.subject_editor, 2, 1, 1, 1)
         layout.addWidget(self.score_editor, 3, 1, 1, 1)
-        layout.addWidget(self.Querybutton, 1, 2, 1, 1)
-        layout.addWidget(self.Addbutton, 3, 2, 1, 1)
-        layout.addWidget(self.Sendbutton, 5, 3, 1, 1)
+        layout.addWidget(self.query_button, 1, 2, 1, 1)
+        layout.addWidget(self.add_button, 3, 2, 1, 1)
+        layout.addWidget(self.send_button, 5, 3, 1, 1)
 
         layout.setColumnStretch(0, 2)
         layout.setColumnStretch(1, 4)
@@ -79,7 +79,7 @@ class AddStuWidget(QtWidgets.QWidget):
             self.subject_editor.setEnabled(True)
             self.score_editor.setEnabled(True)
             self.name_editor.setEnabled(False)
-            self.Querybutton.setEnabled(False)
+            self.query_button.setEnabled(False)
             self.set_message(f"Query Success, Please enter subjects for student {self.name_editor.text()}", "green")
         else:
             self.set_message("Query Fail, Name is already taken", "red", True)
@@ -91,7 +91,7 @@ class AddStuWidget(QtWidgets.QWidget):
             if self.subject_editor.text() not in self.add_scorelist:
                 self.add_scorelist[self.subject_editor.text()] = self.score_editor.text()
                 self.set_message(f"Student {self.name_editor.text()}'s subject '{self.subject_editor.text()}' with score '{self.score_editor.text()}' added", "green")
-                self.Sendbutton.setEnabled(True)
+                self.send_button.setEnabled(True)
             else:
                 self.set_message(f"The {self.name_editor.text()}'s subject '{self.subject_editor.text()}' is already exist", "red")
             self.subject_editor.setText("Subject")
@@ -118,11 +118,11 @@ class AddStuWidget(QtWidgets.QWidget):
     def reset(self):
         self.add_scorelist = dict()
         self.name_editor.setEnabled(True)
-        self.Addbutton.setEnabled(False)
-        self.Sendbutton.setEnabled(False)
+        self.add_button.setEnabled(False)
+        self.send_button.setEnabled(False)
         self.subject_editor.setEnabled(False)
         self.score_editor.setEnabled(False)
-        self.Querybutton.setEnabled(False)
+        self.query_button.setEnabled(False)
 
         self.name_editor.setText("Name")
         self.subject_editor.setText("Subject")
@@ -132,12 +132,12 @@ class AddStuWidget(QtWidgets.QWidget):
 
     def query_situation(self):
         if self.name_editor.text() == "":
-            self.Querybutton.setEnabled(False)
+            self.query_button.setEnabled(False)
         else:
-            self.Querybutton.setEnabled(True)
+            self.query_button.setEnabled(True)
 
     def add_situation(self):
         if self.subject_editor.text() == "" or self.score_editor.text() == "":
-            self.Addbutton.setEnabled(False)
+            self.add_button.setEnabled(False)
         else:
-            self.Addbutton.setEnabled(True)
+            self.add_button.setEnabled(True)

@@ -109,10 +109,10 @@ class AddStuWidget(QtWidgets.QWidget):
         self.message_label.setText(f"Send Success ...\nAdd {self.score_info} successfully")
         QtCore.QTimer.singleShot(3000, self.reset)
 
-    def set_message(self, text, color, setReset=False):
+    def set_message(self, text, color, reset=False):
         self.message_label.set_color(color)
         self.message_label.setText(text)
-        if setReset:
+        if reset:
             QtCore.QTimer.singleShot(2000, self.reset)
 
     def reset(self):

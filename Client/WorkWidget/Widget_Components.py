@@ -27,14 +27,15 @@ class LineEdit(QtWidgets.QLineEdit):
         self.setFixedSize(fix_size[0], fix_size[1])
         self.move(position[0], position[1])
         self.setFont(Font_Config(font_size))
-    #     self.textEdited.connect(self.return_text)
-    #
-    # def return_text(self, text):
-    #     self.windows.check_text(self.objectName(), text)
-    #
-    # def mousePressEvent(self, a0):
-    #     self.clear()
-    #     self.windows.check_mouse(self.objectName())
+        self.textEdited.connect(self.return_text)
+
+    def return_text(self, text):
+        self.windows.check_text(self.objectName(), text)
+
+    def mousePressEvent(self, a0):
+        self.clear()
+        self.windows.check_mouse(self.objectName())
+
 
 def Font_Config(font_size):
     font = QtGui.QFont('Arial', pointSize=font_size, weight=500)
